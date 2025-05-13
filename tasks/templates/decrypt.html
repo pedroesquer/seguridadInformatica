@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Desencriptar texto</h2>
+  <form method="post">
+    {% csrf_token %}
+    
+    <label for="texto">Texto encriptado:</label><br>
+    <textarea name="texto" rows="4" cols="50"></textarea><br><br>
+
+    <label for="clave">Clave:</label><br>
+    <input type="text" name="clave"><br><br>
+
+    <button type="submit">Desencriptar</button>
+  </form>
+
+  {% if resultado %}
+    <h3>Texto original:</h3>
+    <p>{{ resultado }}</p>
+  {% endif %}
+{% endblock %}

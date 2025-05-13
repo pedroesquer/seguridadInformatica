@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Seguridad Informatica</title>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="/tasks">Tasks</a>
+            </li>
+            <li>
+                <a href="/encrypt">Encriptar</a>
+            </li>
+            <li>
+                <a href="/decrypt">Desencriptar</a>
+            </li>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="/signup">Sign up</a>
+            </li>
+            <li>
+                <a href="/signin">Log in</a>
+            </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    <footer
+        style="position: fixed; bottom: 0; left: 0; width: 100%; background: #f0f0f0; text-align: center; padding: 10px;">
+        <small>&copy; 2025 - Seguridad Informática</small>
+    </footer>
+
+
+</body>
+
+</html>

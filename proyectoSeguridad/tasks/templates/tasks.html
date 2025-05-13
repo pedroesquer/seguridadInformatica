@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<h1>Tasks</h1>
+<script>
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted || performance.navigation.type === 2) {
+        // Si la sesión sigue activa, invalidarla
+        fetch('/invalidate/')
+          .then(() => {
+              window.location.href = '/signin/';
+          });
+    }
+});
+</script>
+
+{% endblock %}

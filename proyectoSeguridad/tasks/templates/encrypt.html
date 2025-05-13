@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Encriptar texto</h2>
+  <form method="post">
+    {% csrf_token %}
+    
+    <label for="texto">Texto en claro:</label><br>
+    <textarea name="texto" rows="4" cols="50"></textarea><br><br>
+
+    <label for="clave">Clave:</label><br>
+    <input type="text" name="clave"><br><br>
+
+    <button type="submit">Encriptar</button>
+  </form>
+
+  {% if resultado %}
+    <h3>Texto encriptado:</h3>
+    <p>{{ resultado }}</p>
+  {% endif %}
+{% endblock %}
