@@ -95,7 +95,7 @@ def decrypt_view(request):
 
 
         if not clave_usuario:
-            return render(request, 'decrypt.html', {'resultado': '⚠️ Debes ingresar la misma clave con la que fue cifrado.'})
+            return render(request, 'decrypt.html', {'resultado': 'Debes ingresar la misma clave con la que fue cifrado.'})
 
         key_bytes = hashlib.sha256(clave_usuario.encode()).digest()
         key_bytes = hashlib.sha256(clave_usuario.encode()).digest()
