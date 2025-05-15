@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Proyecto Seguridad Informatica</title>
     <style>
         body {
@@ -30,35 +30,7 @@
             border-radius: 50px;
             overflow: hidden;
             box-shadow: 0 8px 15px rgba(0, 0, 0, .2);
-        }
-
-        .menu {
-            margin: 0;
-            padding: 0;
-            width: 0;
-            overflow: hidden;
-            transition: 0.5s;
-        }
-
-        .nav input:checked~.menu {
-            width: 450px;
-        }
-
-        .menu li {
-            list-style: none;
-            margin: 0 10px;
-        }
-
-        .menu li a {
-            text-decoration: none;
-            color: #666;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: 0.5s;
-        }
-
-        .menu li a:hover {
-            color: #161919;
+            gap: 10px;
         }
 
         .nav input {
@@ -66,6 +38,11 @@
             height: 40px;
             cursor: pointer;
             opacity: 0;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
         }
 
         .nav span {
@@ -77,70 +54,108 @@
             background-color: #666;
             pointer-events: none;
             transition: 0.5s;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav span:nth-child(2) {
+            transform: translateY(calc(-50% - 8px));
+        }
+
+        .nav span:nth-child(3) {
+            transform: translateY(calc(-50% + 8px));
         }
 
         .nav input:checked~span {
             background-color: #f974a1;
         }
 
-        .nav span:nth-child(2) {
-            transform: translateY(-8px);
-        }
-
         .nav input:checked~span:nth-child(2) {
-            transform: translateY(0) rotate(-45deg);
-        }
-
-        .nav span:nth-child(3) {
-            transform: translateY(8px);
+            transform: translateY(-50%) rotate(-45deg);
         }
 
         .nav input:checked~span:nth-child(3) {
-            transform: translateY(0) rotate(45deg);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .menu {
+            margin: 0;
+            padding: 0;
+            width: 0;
+            overflow: hidden;
+            transition: width 0.5s ease;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav input:checked~.menu {
+            width: 450px;
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: color 0.5s;
+            white-space: nowrap;
+        }
+
+        .menu li a:hover {
+            color: #161919;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Para que el contenido no quede tapado por el footer fijo */
+        main {
+            padding-bottom: 60px;
         }
     </style>
 </head>
 
 <body>
+    <nav class="nav">
+        <input type="checkbox" id="menu-toggle" />
+        <span></span>
+        <span></span>
+        <span></span>
 
-    <nav>
-        <ul>
-            <li>
-                <a href="/">Home</a>
-            </li>
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
             {% if user.is_authenticated %}
-            <li>
-                <a href="/tasks">Tasks</a>
-            </li>
-            <li>
-                <a href="/encrypt">Encriptar</a>
-            </li>
-            <li>
-                <a href="/decrypt">Desencriptar</a>
-            </li>
-            <li>
-                <a href="/logout">Logout</a>
-            </li>
+            <li><a href="/tasks">Tasks</a></li>
+            <li><a href="/encrypt">Encriptar</a></li>
+            <li><a href="/decrypt">Desencriptar</a></li>
+            <li><a href="/logout">Logout</a></li>
             {% else %}
-            <li>
-                <a href="/signup">Sign up</a>
-            </li>
-            <li>
-                <a href="/signin">Log in</a>
-            </li>
+            <li><a href="/signup">Sign up</a></li>
+            <li><a href="/signin">Log in</a></li>
             {% endif %}
-
         </ul>
     </nav>
 
-    {% block content %}
-    {% endblock %}
-    <footer
-        style="position: fixed; bottom: 0; left: 0; width: 100%; background: #f0f0f0; text-align: center; padding: 10px;">
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
         <small>&copy; 2025 - Seguridad Informática</small>
     </footer>
-
-
 </body>
 
 </html>
