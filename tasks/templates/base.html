@@ -96,10 +96,33 @@
     main {
       flex-grow: 1;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
-      font-size: 1.2rem;
+      padding: 20px;
+      gap: 30px;
+      min-height: calc(100vh - 130px);
+    }
+
+    main > h1 {
+      margin: 0;
+      align-self: flex-start;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .parrafos {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .parrafos p {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      text-align: center;
     }
 
     footer {
@@ -135,6 +158,13 @@
   </nav>
 
   <main>
+    <h1>Bienvenido a Proyecto Seguridad Informática</h1>
+    <div class="parrafos">
+      <p>Este es un ejemplo de párrafo 1.</p>
+      <p>Otro párrafo, siempre centrado y vertical.</p>
+      <p>Agrega aquí tu contenido en formato vertical.</p>
+    </div>
+
     {% block content %}
     {% endblock %}
   </main>
