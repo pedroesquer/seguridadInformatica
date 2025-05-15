@@ -2,160 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Proyecto Seguridad Informatica</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background-color: #dcdc39;
-            font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyecto Seguridad Informatica</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #dcdc39;
+      padding-bottom: 50px; /* para footer */
+    }
 
-        body,
-        .nav,
-        .menu {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    nav {
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-        .nav {
-            position: relative;
-            background-color: #fff;
-            padding: 20px;
-            transition: 0.5s;
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, .2);
-            gap: 10px;
-        }
+    .menu-toggle {
+      display: none;
+    }
 
-        .nav input {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            opacity: 0;
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-        }
+    .menu-btn {
+      display: none;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 18px;
+      user-select: none;
+    }
 
-        .nav span {
-            position: absolute;
-            left: 30px;
-            width: 30px;
-            height: 4px;
-            border-radius: 50px;
-            background-color: #666;
-            pointer-events: none;
-            transition: 0.5s;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+    ul.menu {
+      list-style: none;
+      margin: 0;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
 
-        .nav span:nth-child(2) {
-            transform: translateY(calc(-50% - 8px));
-        }
+    ul.menu li a {
+      display: block;
+      padding: 15px 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
 
-        .nav span:nth-child(3) {
-            transform: translateY(calc(-50% + 8px));
-        }
+    ul.menu li a:hover {
+      color: #f974a1;
+    }
 
-        .nav input:checked~span {
-            background-color: #f974a1;
-        }
+    /* Responsive para móvil */
+    @media (max-width: 600px) {
+      .menu-btn {
+        display: block;
+      }
 
-        .nav input:checked~span:nth-child(2) {
-            transform: translateY(-50%) rotate(-45deg);
-        }
+      ul.menu {
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
 
-        .nav input:checked~span:nth-child(3) {
-            transform: translateY(-50%) rotate(45deg);
-        }
+      .menu-toggle:checked + .menu-btn + ul.menu {
+        max-height: 300px; /* altura suficiente para mostrar el menú */
+      }
+    }
 
-        .menu {
-            margin: 0;
-            padding: 0;
-            width: 0;
-            overflow: hidden;
-            transition: width 0.5s ease;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .nav input:checked~.menu {
-            width: 450px;
-        }
-
-        .menu li {
-            margin: 0 10px;
-        }
-
-        .menu li a {
-            text-decoration: none;
-            color: #666;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: color 0.5s;
-            white-space: nowrap;
-        }
-
-        .menu li a:hover {
-            color: #161919;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #f0f0f0;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
-        }
-
-        /* Para que el contenido no quede tapado por el footer fijo */
-        main {
-            padding-bottom: 60px;
-        }
-    </style>
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 
 <body>
-    <nav class="nav">
-        <input type="checkbox" id="menu-toggle" />
-        <span></span>
-        <span></span>
-        <span></span>
+  <nav>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+    <label for="menu-toggle" class="menu-btn">☰ Menu</label>
+    <ul class="menu">
+      <li><a href="/">Home</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="/tasks">Tasks</a></li>
+      <li><a href="/encrypt">Encriptar</a></li>
+      <li><a href="/decrypt">Desencriptar</a></li>
+      <li><a href="/logout">Logout</a></li>
+      {% else %}
+      <li><a href="/signup">Sign up</a></li>
+      <li><a href="/signin">Log in</a></li>
+      {% endif %}
+    </ul>
+  </nav>
 
-        <ul class="menu">
-            <li><a href="/">Home</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="/tasks">Tasks</a></li>
-            <li><a href="/encrypt">Encriptar</a></li>
-            <li><a href="/decrypt">Desencriptar</a></li>
-            <li><a href="/logout">Logout</a></li>
-            {% else %}
-            <li><a href="/signup">Sign up</a></li>
-            <li><a href="/signin">Log in</a></li>
-            {% endif %}
-        </ul>
-    </nav>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <footer>
-        <small>&copy; 2025 - Seguridad Informática</small>
-    </footer>
+  <footer>
+    <small>&copy; 2025 - Seguridad Informática</small>
+  </footer>
 </body>
 
 </html>
