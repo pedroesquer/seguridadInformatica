@@ -2,176 +2,148 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Proyecto Seguridad Informatica</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proyecto Seguridad Informatica</title>
 
-  <!-- Fuente Poppins de Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <!-- Fuente Poppins de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      text-align: center;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
 
-    nav {
-      background: white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+        nav {
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
 
-    .menu-toggle {
-      display: none;
-    }
+        .menu-toggle {
+            display: none;
+        }
 
-    .menu-btn {
-      display: none;
-      cursor: pointer;
-      padding: 10px 20px;
-      font-size: 20px;
-      user-select: none;
-      font-weight: 600;
-    }
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 20px;
+            user-select: none;
+            font-weight: 600;
+        }
 
-    ul.menu {
-      list-style: none;
-      margin: 0;
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
+        ul.menu {
+            list-style: none;
+            margin: 0;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
 
-    ul.menu li a {
-      display: block;
-      padding: 15px 10px;
-      text-decoration: none;
-      color: #333;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
+        ul.menu li a {
+            display: block;
+            padding: 15px 10px;
+            text-decoration: none;
+            color: #333;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
 
-    ul.menu li a:hover {
-      color: #f974a1;
-    }
+        ul.menu li a:hover {
+            color: #f974a1;
+        }
 
-    /* Responsive para móvil */
-    @media (max-width: 600px) {
-      .menu-btn {
-        display: block;
-      }
+        /* Responsive para móvil */
+        @media (max-width: 600px) {
+            .menu-btn {
+                display: block;
+            }
 
-      ul.menu {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        gap: 0;
-      }
+            ul.menu {
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                gap: 0;
+            }
 
-      ul.menu li {
-        margin: 0;
-      }
+            ul.menu li {
+                margin: 0;
+            }
 
-      ul.menu li a {
-        padding: 12px 0;
-        border-bottom: 1px solid #ddd;
-      }
+            ul.menu li a {
+                padding: 12px 0;
+                border-bottom: 1px solid #ddd;
+            }
 
-      .menu-toggle:checked + .menu-btn + ul.menu {
-        max-height: 300px;
-      }
-    }
+            .menu-toggle:checked+.menu-btn+ul.menu {
+                max-height: 300px;
+            }
+        }
 
-    main {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      gap: 30px;
-      min-height: calc(100vh - 130px);
-    }
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            font-size: 1.2rem;
+        }
 
-    main > h1 {
-      margin: 0;
-      align-self: flex-start;
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
 
-    .parrafos {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
-      max-width: 600px;
-    }
-
-    .parrafos p {
-      margin: 0;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #f0f0f0;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9rem;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    }
-  </style>
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
-  <nav>
-    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-    <label for="menu-toggle" class="menu-btn">☰ Menu</label>
-    <ul class="menu">
-      <li><a href="/">Home</a></li>
-      {% if user.is_authenticated %}
-      <li><a href="/tasks">Tasks</a></li>
-      <li><a href="/encrypt">Encriptar</a></li>
-      <li><a href="/decrypt">Desencriptar</a></li>
-      <li><a href="/logout">Logout</a></li>
-      {% else %}
-      <li><a href="/signup">Sign up</a></li>
-      <li><a href="/signin">Log in</a></li>
-      {% endif %}
-    </ul>
-  </nav>
+    <nav>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="menu-btn">☰ Menu</label>
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="/tasks">Tasks</a></li>
+            <li><a href="/encrypt">Encriptar</a></li>
+            <li><a href="/decrypt">Desencriptar</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/signup">Sign up</a></li>
+            <li><a href="/signin">Log in</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 
-  <main>
-    <h1>Bienvenido a Proyecto Seguridad Informática</h1>
-    <div class="parrafos">
-      <p>Este es un ejemplo de párrafo 1.</p>
-      <p>Otro párrafo, siempre centrado y vertical.</p>
-      <p>Agrega aquí tu contenido en formato vertical.</p>
-    </div>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 
-    {% block content %}
-    {% endblock %}
-  </main>
-
-  <footer>
-    <small>&copy; 2025 - Seguridad Informática</small>
-  </footer>
+    <footer>
+        <small>&copy; 2025 - Seguridad Informática</small>
+    </footer>
 </body>
 
 </html>
